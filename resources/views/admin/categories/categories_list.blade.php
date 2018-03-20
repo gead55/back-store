@@ -17,7 +17,7 @@
                             <tr>
                                 <th>@lang('categories.category')</th>
                                 <th>@lang('categories.description')</th>
-                                @ability(('','edit,delete'))
+                                @ability('','edit,delete')
                                 <th>@lang('categories.action')</th>
                                 @endability
                             </tr>
@@ -26,7 +26,7 @@
                             <tr>
                                 <th>@lang('categories.category')</th>
                                 <th>@lang('categories.description')</th>
-                                @ability(('','edit,delete'))
+                                @ability('','edit,delete')
                                 <th>@lang('categories.action')</th>
                                 @endability
                             </tr>
@@ -37,7 +37,7 @@
                             <tr>
                                 <td>{{$row->name}}</td>
                                 <td>{{$row->description}}</td>
-                                @ability(('','edit,delete'))
+                                @ability('','edit,delete')
                                 <td>
                                     @permission(('edit'))
                                     <a href="{{ route('product-categories.edit', ['id' => $row->id]) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil" title="Edit"></i> </a>

@@ -20,7 +20,7 @@
                                 <th>@lang('customers.email')</th>
                                 <th>@lang('customers.postal_address')</th>
                                 <th>@lang('customers.physical_address')</th>
-                                @ability(('','edit,delete'))
+                                @ability('','edit,delete')
                                 <th>@lang('customers.action')</th>
                                 @endability
                             </tr>
@@ -32,7 +32,7 @@
                                 <th>@lang('customers.email')</th>
                                 <th>@lang('customers.postal_address')</th>
                                 <th>@lang('customers.physical_address')</th>
-                                @ability(('','edit,delete'))
+                                @ability('','edit,delete')
                                 <th>@lang('customers.action')</th>
                                 @endability
                             </tr>
