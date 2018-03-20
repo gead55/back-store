@@ -72,7 +72,12 @@ class ProductsController extends Controller
             'price' => 'required',
             'brand_id' => 'required',
             'category_id' => 'required',
+            'filename' => 'required',
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
+
+        $data = null;
+
 
         $product = Product::create([
             'product_code' => $request->input('product_code'),
@@ -83,6 +88,7 @@ class ProductsController extends Controller
             'category_id' => $request->input('category_id'),
             'created_at_ip' => $request->ip(),
             'updated_at_ip' => $request->ip(),
+            'filename' => json_encode($data)
         ]);
 
         return redirect()->route('products.index')->with('success', trans('general.form.flash.created',['name' => $product->product_name]));

@@ -92,6 +92,33 @@
                             </div>
                         </div>
 
+                        <script src="{{asset('admin/js/jquery.min.js')}}"></script>
+
+                        <div class="form-group{{ $errors->has('filename') ? ' has-error' : '' }} control-group increment">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="filename">
+                            images upload <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="file" name="filename[]" class="form-control">
+                            </div>
+                            <div class="input-group-btn col-md-3 col-sm-3 col-xs-12"> 
+                                <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                            </div>
+                        </div>
+                        <div class="clone hide">
+                        <div class="form-group{{ $errors->has('filename') ? ' has-error' : '' }} control-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="filename">
+                            images upload <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="file" name="filename[]" class="form-control">
+                            </div>
+                            <div class="input-group-btn col-md-3 col-sm-3 col-xs-12"> 
+                                <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+                            </div>
+                        </div>
+                        </div>
+
                         <div class="ln_solid"></div>
 
                         <div class="form-group">
@@ -106,4 +133,21 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+
+
+    $(document).ready(function() {
+
+      $(".btn-success").click(function(){ 
+          var html = $(".clone").html();
+          $(".increment").after(html);
+      });
+
+      $("body").on("click",".btn-danger",function(){ 
+          $(this).parents(".control-group").remove();
+      });
+
+    });
+
+</script>
 @stop

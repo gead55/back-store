@@ -21,9 +21,9 @@
                                 <th>@lang('products.price')</th>
                                 <th>@lang('products.brand')</th>
                                 <th>@lang('products.category')</th>
-                                @ability('','edit,delete')
+                                {{--@ability(('','edit,delete'))--}}
                                 <th>@lang('products.action')</th>
-                                @endability
+                                {{--@endability--}}
                             </tr>
                         </thead>
                         <tfoot>
@@ -34,9 +34,9 @@
                                 <th>@lang('products.price')</th>
                                 <th>@lang('products.brand')</th>
                                 <th>@lang('products.category')</th>
-                                @ability('','edit,delete')
+                                {{--@ability(('','edit,delete'))--}}
                                 <th>@lang('products.action')</th>
-                                @endability
+                                {{--@endability--}}
                             </tr>
                         </tfoot>
                         <tbody>

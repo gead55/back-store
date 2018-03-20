@@ -17,18 +17,18 @@
                             <tr>
                                 <th>@lang('brands.brand')</th>
                                 <th>@lang('brands.description')</th>
-                                @ability('','edit,delete')
+                                {{--@ability(('','edit,delete'))--}}
                                 <th>@lang('brands.action')</th>
-                                @endability
+                                {{--@endability--}}
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th>@lang('brands.brand')</th>
                                 <th>@lang('brands.description')</th>
-                                @ability('','edit,delete')
+                                {{--@ability(('','edit,delete'))--}}
                                 <th>@lang('brands.action')</th>
-                                @endability
+                                {{--@endability--}}
                             </tr>
                         </tfoot>
                         <tbody>
@@ -37,7 +37,7 @@
                             <tr>
                                 <td>{{$row->name}}</td>
                                 <td>{{$row->description}}</td>
-                                @ability('','edit,delete')
+                                {{--@ability(('','edit,delete'))--}}
                                 <td>
                                     @permission(('edit'))
                                     <a href="{{ route('brands.edit', ['id' => $row->id]) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil" title="Edit"></i> </a>
@@ -46,7 +46,7 @@
                                     <a href="{{ route('brands.show', ['id' => $row->id]) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o" title="Delete"></i> </a>
                                     @endpermission
                                 </td>
-                                @endability
+                                {{--@endability--}}
                             </tr>
                             @endforeach
                             @endif

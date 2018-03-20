@@ -22,7 +22,8 @@ class Product extends Model
         'brand_id',
         'category_id',
         'created_at_ip',
-        'updated_at_ip'
+        'updated_at_ip',
+        'filename'
     ];
 
     /**
