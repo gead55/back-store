@@ -76,8 +76,16 @@ class ProductsController extends Controller
             'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
-        $data = null;
-
+        if($request->hasfile('filename'))
+         {
+            $pathfile = public_path().'/images/';
+            foreach($request->file('filename') as $image)
+            {
+                $name=$image->getClientOriginalName();
+                $image->move($pathfile, $name);  
+                $data[] = $name;  
+            }
+         }
 
         $product = Product::create([
             'product_code' => $request->input('product_code'),
@@ -88,6 +96,7 @@ class ProductsController extends Controller
             'category_id' => $request->input('category_id'),
             'created_at_ip' => $request->ip(),
             'updated_at_ip' => $request->ip(),
+            'pathfile' => $pathfile,
             'filename' => json_encode($data)
         ]);
 

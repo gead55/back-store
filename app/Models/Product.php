@@ -23,6 +23,7 @@ class Product extends Model
         'category_id',
         'created_at_ip',
         'updated_at_ip',
+        'pathfile',
         'filename'
     ];
 

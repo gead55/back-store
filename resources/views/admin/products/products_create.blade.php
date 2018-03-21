@@ -12,13 +12,14 @@
                 </div>
                 <div class="x_content">
                     <br />
-                    <form method="post" action="{{ route('products.store') }}" data-parsley-validate class="form-horizontal form-label-left">
+                    <form method="post" action="{{ route('products.store') }}" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
+                        {{csrf_field()}}
 
                         <div class="form-group{{ $errors->has('product_code') ? ' has-error' : '' }}">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="product_code">@lang('products.code') <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" value="{{ Request::old('product_code') ?: '' }}" id="product_code" name="product_code" class="form-control col-md-7 col-xs-12">
+                                <input type="text" value="xxx{{ Request::old('product_code') ?: '' }}" id="product_code" name="product_code" class="form-control col-md-7 col-xs-12">
                                 @if ($errors->has('product_code'))
                                 <span class="help-block">{{ $errors->first('product_code') }}</span>
                                 @endif
@@ -29,7 +30,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="product_name">@lang('products.name') <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" value="{{ Request::old('product_name') ?: '' }}" id="product_name" name="product_name" class="form-control col-md-7 col-xs-12">
+                                <input type="text" value="xxx{{ Request::old('product_name') ?: '' }}" id="product_name" name="product_name" class="form-control col-md-7 col-xs-12">
                                 @if ($errors->has('product_name'))
                                 <span class="help-block">{{ $errors->first('product_name') }}</span>
                                 @endif
@@ -40,7 +41,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">@lang('products.description')
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" value="{{ Request::old('description') ?: '' }}" id="description" name="description" class="form-control col-md-7 col-xs-12">
+                                <input type="text" value="xxx{{ Request::old('description') ?: '' }}" id="description" name="description" class="form-control col-md-7 col-xs-12">
                                 @if ($errors->has('description'))
                                 <span class="help-block">{{ $errors->first('description') }}</span>
                                 @endif
@@ -51,7 +52,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="price">@lang('products.price') <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" value="{{ Request::old('price') ?: '' }}" id="price" name="price" class="form-control col-md-7 col-xs-12">
+                                <input type="text" value="555{{ Request::old('price') ?: '' }}" id="price" name="price" class="form-control col-md-7 col-xs-12">
                                 @if ($errors->has('price'))
                                 <span class="help-block">{{ $errors->first('price') }}</span>
                                 @endif
@@ -102,13 +103,12 @@
                                 <input type="file" name="filename[]" class="form-control">
                             </div>
                             <div class="input-group-btn col-md-3 col-sm-3 col-xs-12"> 
-                                <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                                <button id="add_btn" class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
                             </div>
                         </div>
                         <div class="clone hide">
                         <div class="form-group{{ $errors->has('filename') ? ' has-error' : '' }} control-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="filename">
-                            images upload <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input type="file" name="filename[]" class="form-control">
@@ -123,7 +123,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                <input type="hidden" name="_token" value="{{ Session::token() }}">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <button type="submit" class="btn btn-success">@lang('general.form.create_record')</button>
                             </div>
                         </div>
@@ -138,7 +138,7 @@
 
     $(document).ready(function() {
 
-      $(".btn-success").click(function(){ 
+      $("#add_btn").click(function(){ 
           var html = $(".clone").html();
           $(".increment").after(html);
       });
