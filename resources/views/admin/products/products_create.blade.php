@@ -19,7 +19,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="product_code">@lang('products.code') <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" value="xxx{{ Request::old('product_code') ?: '' }}" id="product_code" name="product_code" class="form-control col-md-7 col-xs-12">
+                                <input type="text" value="{{ Request::old('product_code') ?: '' }}" id="product_code" name="product_code" class="form-control col-md-7 col-xs-12">
                                 @if ($errors->has('product_code'))
                                 <span class="help-block">{{ $errors->first('product_code') }}</span>
                                 @endif
@@ -30,7 +30,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="product_name">@lang('products.name') <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" value="xxx{{ Request::old('product_name') ?: '' }}" id="product_name" name="product_name" class="form-control col-md-7 col-xs-12">
+                                <input type="text" value="{{ Request::old('product_name') ?: '' }}" id="product_name" name="product_name" class="form-control col-md-7 col-xs-12">
                                 @if ($errors->has('product_name'))
                                 <span class="help-block">{{ $errors->first('product_name') }}</span>
                                 @endif
@@ -41,7 +41,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">@lang('products.description')
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" value="xxx{{ Request::old('description') ?: '' }}" id="description" name="description" class="form-control col-md-7 col-xs-12">
+                                <input type="text" value="{{ Request::old('description') ?: '' }}" id="description" name="description" class="form-control col-md-7 col-xs-12">
                                 @if ($errors->has('description'))
                                 <span class="help-block">{{ $errors->first('description') }}</span>
                                 @endif
@@ -52,7 +52,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="price">@lang('products.price') <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" value="555{{ Request::old('price') ?: '' }}" id="price" name="price" class="form-control col-md-7 col-xs-12">
+                                <input type="text" value="{{ Request::old('price') ?: '' }}" id="price" name="price" class="form-control col-md-7 col-xs-12">
                                 @if ($errors->has('price'))
                                 <span class="help-block">{{ $errors->first('price') }}</span>
                                 @endif
