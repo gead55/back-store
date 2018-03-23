@@ -78,13 +78,14 @@ class ProductsController extends Controller
 
         if($request->hasfile('filename'))
          {
-            $pathfile = public_path().'/images/'.date('Y').'/'.date('m').'/';
+            //public_path().
+            $pathfile = '/images/'.date('Y').'/'.date('m').'/';
             foreach($request->file('filename') as $image)
             {
                 $ext = $image->guessClientExtension();
                 // $name = $image->getClientOriginalName();
                 $name = date("YmdHis-").(microtime(true) * 10000).'.'.$ext;
-                $image->move($pathfile, $name);  
+                $image->move(public_path().$pathfile, $name);  
                 $data[] = $name;  
             }
          }
