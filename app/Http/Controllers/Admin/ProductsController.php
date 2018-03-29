@@ -85,7 +85,7 @@ class ProductsController extends Controller
                 $ext = $image->guessClientExtension();
                 // $name = $image->getClientOriginalName();
                 $name = date("YmdHis-").(microtime(true) * 10000).'.'.$ext;
-                $image->move($pathfile, $name);  
+                $image->move(public_path().$pathfile, $name);  
                 $data[] = $name;  
             }
          }
