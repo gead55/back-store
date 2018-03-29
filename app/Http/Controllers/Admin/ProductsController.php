@@ -78,7 +78,8 @@ class ProductsController extends Controller
 
         if($request->hasfile('filename'))
          {
-            $pathfile = public_path().'/images/'.date('Y').'/'.date('m').'/';
+            //public_path().
+            $pathfile = '/images/'.date('Y').'/'.date('m').'/';
             foreach($request->file('filename') as $image)
             {
                 $ext = $image->guessClientExtension();
