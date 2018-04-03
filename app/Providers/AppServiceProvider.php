@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //App::make('files')->copyDirectory(storage_path('app\public\uploads'), public_path('storage\uploads'));
     }
 
     /**

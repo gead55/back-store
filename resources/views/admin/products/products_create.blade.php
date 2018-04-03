@@ -25,6 +25,17 @@
                                 @endif
                             </div>
                         </div>
+                        
+                        <div class="form-group{{ $errors->has('product_xcode') ? ' has-error' : '' }}">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="product_xcode">@lang('products.code') <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" value="{{ Request::old('product_xcode') ?: '' }}" id="product_xcode" name="product_xcode" class="form-control col-md-7 col-xs-12">
+                                @if ($errors->has('product_xcode'))
+                                <span class="help-block">{{ $errors->first('product_xcode') }}</span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group{{ $errors->has('product_name') ? ' has-error' : '' }}">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="product_name">@lang('products.name') <span class="required">*</span>
@@ -64,9 +75,10 @@
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select class="form-control" id="brand_id" name="brand_id">
+                                    <option>Select...</option>
                                     @if(count($brands))
                                         @foreach($brands as $row)
-                                            <option value="{{$row->id}}">{{$row->name}}</option>
+                                            <option {{ (Request::old('brand_id') == $row->id ? 'selected':'') }} value="{{$row->id}}">{{$row->name}}</option>
                                         @endforeach
                                     @endif
                                 </select>
@@ -81,9 +93,10 @@
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select class="form-control" id="category_id" name="category_id">
+                                    <option>Select...</option>
                                     @if(count($categories))
                                         @foreach($categories as $row)
-                                            <option value="{{$row->id}}">{{$row->name}}</option>
+                                            <option {{ (Request::old('category_id') == $row->id ? 'selected':'') }} value="{{$row->id}}">{{$row->name}}</option>
                                         @endforeach
                                     @endif
                                 </select>
@@ -93,7 +106,7 @@
                             </div>
                         </div>
 
-                        <script src="{{asset('admin/js/jquery.min.js')}}"></script>
+<!--                         <script src="{{asset('admin/js/jquery.min.js')}}"></script>
 
                         <div class="form-group{{ $errors->has('filename') ? ' has-error' : '' }} control-group increment">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="filename">
@@ -117,8 +130,16 @@
                                 <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
                             </div>
                         </div>
+                        </div> -->
+                        <script src="{{asset('/ckeditor/ckeditor.js')}}"></script>
+                        <div class="form-group{{ $errors->has('detail') ? ' has-error' : '' }} control-group increment">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="filename">
+                            detail <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <textarea id="article-ckeditor" class="ckeditor"> </textarea>  
+                            </div>
                         </div>
-
                         <div class="ln_solid"></div>
 
                         <div class="form-group">
@@ -133,7 +154,8 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
+
+<!-- <script type="text/javascript">
 
 
     $(document).ready(function() {
@@ -149,5 +171,5 @@
 
     });
 
-</script>
+</script> -->
 @stop

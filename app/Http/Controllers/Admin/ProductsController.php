@@ -67,6 +67,7 @@ class ProductsController extends Controller
     {
         $this->validate($request, [
             'product_code' => 'required|unique:products',
+            'product_xcode' => 'required',
             'product_name' => 'required',
             'description' => 'required',
             'price' => 'required',
