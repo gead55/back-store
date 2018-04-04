@@ -92,6 +92,21 @@
                             </div>
                         </div>
 
+                        <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+
+                        <div class="form-group{{ $errors->has('txt_detail') ? ' has-error' : '' }} control-group increment">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt_detail">
+                            detail <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <textarea id="txt_detail" name="txt_detail" class="ckeditor">
+                                    {{ Request::old('txt_detail') ?: $product->detail }}
+                                </textarea>  
+                            </div>
+                            @if ($errors->has('txt_detail'))
+                            <span class="help-block">{{ $errors->first('txt_detail') }}</span>
+                            @endif
+                        </div>
                         <div class="ln_solid"></div>
 
                         <div class="form-group">

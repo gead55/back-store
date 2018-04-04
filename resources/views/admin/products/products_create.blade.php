@@ -25,17 +25,6 @@
                                 @endif
                             </div>
                         </div>
-                        
-                        <div class="form-group{{ $errors->has('product_xcode') ? ' has-error' : '' }}">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="product_xcode">@lang('products.code') <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" value="{{ Request::old('product_xcode') ?: '' }}" id="product_xcode" name="product_xcode" class="form-control col-md-7 col-xs-12">
-                                @if ($errors->has('product_xcode'))
-                                <span class="help-block">{{ $errors->first('product_xcode') }}</span>
-                                @endif
-                            </div>
-                        </div>
 
                         <div class="form-group{{ $errors->has('product_name') ? ' has-error' : '' }}">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="product_name">@lang('products.name') <span class="required">*</span>
@@ -75,7 +64,7 @@
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select class="form-control" id="brand_id" name="brand_id">
-                                    <option>Select...</option>
+                                    <option value=''>Select...</option>
                                     @if(count($brands))
                                         @foreach($brands as $row)
                                             <option {{ (Request::old('brand_id') == $row->id ? 'selected':'') }} value="{{$row->id}}">{{$row->name}}</option>
@@ -93,7 +82,7 @@
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select class="form-control" id="category_id" name="category_id">
-                                    <option>Select...</option>
+                                    <option value=''>Select...</option>
                                     @if(count($categories))
                                         @foreach($categories as $row)
                                             <option {{ (Request::old('category_id') == $row->id ? 'selected':'') }} value="{{$row->id}}">{{$row->name}}</option>
@@ -132,13 +121,18 @@
                         </div>
                         </div> -->
                         <script src="{{asset('/ckeditor/ckeditor.js')}}"></script>
-                        <div class="form-group{{ $errors->has('detail') ? ' has-error' : '' }} control-group increment">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="filename">
+                        <div class="form-group{{ $errors->has('txt_detail') ? ' has-error' : '' }} control-group increment">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt_detail">
                             detail <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <textarea id="article-ckeditor" class="ckeditor"> </textarea>  
+                                <textarea id="txt_detail" name="txt_detail" class="ckeditor">
+                                    {{ Request::old('txt_detail') ?: '' }}
+                                </textarea>  
                             </div>
+                            @if ($errors->has('txt_detail'))
+                            <span class="help-block">{{ $errors->first('txt_detail') }}</span>
+                            @endif
                         </div>
                         <div class="ln_solid"></div>
 

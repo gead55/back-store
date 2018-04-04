@@ -67,29 +67,30 @@ class ProductsController extends Controller
     {
         $this->validate($request, [
             'product_code' => 'required|unique:products',
-            'product_xcode' => 'required',
             'product_name' => 'required',
             'description' => 'required',
             'price' => 'required',
             'brand_id' => 'required',
             'category_id' => 'required',
-            'filename' => 'required',
-            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'txt_detail' => 'required',
+            // 'filename' => 'required',
+            // 'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
-        if($request->hasfile('filename'))
-         {
-            //public_path().
-            $pathfile = '/images/'.date('Y').'/'.date('m').'/';
-            foreach($request->file('filename') as $image)
-            {
-                $ext = $image->guessClientExtension();
-                // $name = $image->getClientOriginalName();
-                $name = date("YmdHis-").(microtime(true) * 10000).'.'.$ext;
-                $image->move(public_path().$pathfile, $name);  
-                $data[] = $name;  
-            }
-         }
+
+        // if($request->hasfile('filename'))
+        //  {
+        //     //public_path().
+        //     $pathfile = '/images/'.date('Y').'/'.date('m').'/';
+        //     foreach($request->file('filename') as $image)
+        //     {
+        //         $ext = $image->guessClientExtension();
+        //         // $name = $image->getClientOriginalName();
+        //         $name = date("YmdHis-").(microtime(true) * 10000).'.'.$ext;
+        //         $image->move(public_path().$pathfile, $name);  
+        //         $data[] = $name;  
+        //     }
+        //  }
 
         $product = Product::create([
             'product_code' => $request->input('product_code'),
@@ -99,9 +100,10 @@ class ProductsController extends Controller
             'brand_id' => $request->input('brand_id'),
             'category_id' => $request->input('category_id'),
             'created_at_ip' => $request->ip(),
-            'updated_at_ip' => $request->ip(),
-            'pathfile' => $pathfile,
-            'filename' => json_encode($data)
+            // 'updated_at_ip' => $request->ip(),
+            // 'pathfile' => $pathfile,
+            // 'filename' => json_encode($data),
+            'detail' => $request->input('txt_detail')
         ]);
 
         return redirect()->route('products.index')->with('success', trans('general.form.flash.created',['name' => $product->product_name]));
@@ -185,6 +187,7 @@ class ProductsController extends Controller
                 'price' => 'required',
                 'brand_id' => 'required',
                 'category_id' => 'required',
+                'txt_detail' => 'required'
             ]);
 
             $product = Product::findOrFail($id);
@@ -196,7 +199,8 @@ class ProductsController extends Controller
             $product->brand_id = $request->input('brand_id');
             $product->category_id = $request->input('category_id');
             $product->updated_at_ip = $request->ip();
-
+            $product->detail = $request->input('txt_detail');
+            
             $product->save();
 
             return redirect()->route('products.index')->with('success', trans('general.form.flash.updated',['name' => $product->product_name]));

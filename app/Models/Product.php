@@ -24,7 +24,8 @@ class Product extends Model
         'created_at_ip',
         'updated_at_ip',
         'pathfile',
-        'filename'
+        'filename',
+        'detail'
     ];
 
     /**
