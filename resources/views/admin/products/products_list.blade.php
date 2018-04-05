@@ -52,6 +52,7 @@
                                 <td>
                                     <a href="{{ route('products.edit', ['id' => $row->id]) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil" title="Edit"></i> </a>
                                     <a href="{{ route('products.show', ['id' => $row->id]) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o" title="Delete"></i> </a>
+                                    <a href="{{ route('products.img_crud', ['id' => $row->id]) }}" class="btn btn-primary btn-xs"><i class="fa fa-file-image-o" title="Image"></i> </a>
                                 </td>
                             </tr>
                             @endforeach

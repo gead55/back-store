@@ -22,6 +22,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
         Route::resource('brands', 'BrandsController');
         Route::resource('product-categories', 'ProductCategoriesController');
         Route::resource('products', 'ProductsController');
+        Route::resource('images', 'ImagesController');
         Route::resource('users', 'UsersController');
 
         Route::get('orders',[

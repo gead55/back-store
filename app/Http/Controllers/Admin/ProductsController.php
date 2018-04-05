@@ -19,8 +19,26 @@ class ProductsController extends Controller
         $this->middleware('permission:create', ['only' => ['create', 'store']]);
         $this->middleware('permission:edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:delete', ['only' => ['show', 'delete']]);
+        // $this->middleware('permission:img_crud', ['only' => ['img_crud']]);
     }
-    
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */    
+    public function img_crud($id)
+    {
+        $products = Product::all();
+
+        $params = [
+            'title' => 'Products Imaging',
+            'products' => $products,
+        ];
+       return view('admin.products.products_image')->with($params);
+    }
+
     /**
      * Display a listing of the resource.
      *
